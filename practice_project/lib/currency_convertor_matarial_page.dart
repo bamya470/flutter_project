@@ -1,51 +1,45 @@
 import 'package:flutter/material.dart';
 
-
-
-
-
-
-class CurrencyConvertorMatarialPage extends StatefulWidget{
-   const CurrencyConvertorMatarialPage({super.key});
+class CurrencyConvertorMatarialPage extends StatefulWidget {
+  const CurrencyConvertorMatarialPage({super.key});
 
   @override
-   State<CurrencyConvertorMatarialPage> createState() => _CurrencyConverterMaterialPageState();
-   
+  State<CurrencyConvertorMatarialPage> createState() => _CurrencyConverterMaterialPageState();
 }
- 
-class _CurrencyConverterMaterialPageState extends State<CurrencyConvertorMatarialPage>{
-  
-  double result = 0.0;
 
+class _CurrencyConverterMaterialPageState extends State<CurrencyConvertorMatarialPage> {
+  double result = 0.0;
   final TextEditingController value = TextEditingController();
+
   @override
-  Widget build(BuildContext context){
-    print('built fn')  ; 
-    final border= OutlineInputBorder(
-                  borderSide: BorderSide(
-                    width: 2.0,
-                    strokeAlign: BorderSide.strokeAlignOutside,
-                  ),
-                );
-  return Scaffold(
-    backgroundColor: Colors.blueGrey,
-        appBar: AppBar(
-          title: const Text('Currency Convertor'),
-          backgroundColor: Colors.white,
-          centerTitle: true,
-        ),
-        body: Center( 
-          child:Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(result.toStringAsFixed(2), 
-          style: TextStyle(
-            fontSize: 45,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-            ),
-            
+  Widget build(BuildContext context) {
+    print('built fn');
+    final border = OutlineInputBorder(
+      borderSide: BorderSide(
+        width: 2.0,
+        strokeAlign: BorderSide.strokeAlignOutside,
+      ),
+    );
+
+    return Scaffold(
+      backgroundColor: Colors.blueGrey,
+      appBar: AppBar(
+        title: const Text('Currency Convertor'),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              result.toStringAsFixed(2),
+              style: TextStyle(
+                fontSize: 45,
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),
@@ -63,50 +57,41 @@ class _CurrencyConverterMaterialPageState extends State<CurrencyConvertorMataria
                   prefixIconColor: Colors.black,
                   filled: true,
                   fillColor: Colors.white,
-                  enabledBorder:border,
-                  focusedBorder:border,
+                  enabledBorder: border,
+                  focusedBorder: border,
                 ),
-                keyboardType: TextInputType.numberWithOptions(
-                  decimal: true
-                  ),
-                
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: ElevatedButton(
-                  onPressed: () {
+                onPressed: () {
                   setState(() {
-                  result = double.parse(value.text)*81;
+                    result = double.parse(value.text) * 81;
                   });
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all(Colors.black),
-                    padding: WidgetStateProperty.all(
-                      const EdgeInsets.symmetric(
-                        vertical: 10.0,
-                        horizontal: 20.0,
-                      ),
+                },
+                style: ButtonStyle(
+                  backgroundColor: WidgetStateProperty.all(Colors.black),
+                  padding: WidgetStateProperty.all(
+                    const EdgeInsets.symmetric(
+                      vertical: 10.0,
+                      horizontal: 20.0,
                     ),
-                    minimumSize: WidgetStateProperty.all(
-                      const Size(1/0, 50.0),
-                    ), 
                   ),
-                      child: const Text(
-                        'Convert',
-                         style:
-                          TextStyle(
-                            color: Colors.white
-                            ),
-                            ),
+                  minimumSize: WidgetStateProperty.all(
+                    const Size(double.infinity, 50.0),
                   ),
-            ),
-
-        ],
                 ),
+                child: const Text(
+                  'Convert',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          ],
         ),
+      ),
     );
   }
 }
-
