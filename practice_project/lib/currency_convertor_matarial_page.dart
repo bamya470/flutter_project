@@ -8,14 +8,21 @@ class CurrencyConvertorMatarialPage extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-  return const Scaffold(
+
+    final border= OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 2.0,
+                    strokeAlign: BorderSide.strokeAlignOutside,
+                  ),
+                );
+  return Scaffold(
     backgroundColor: Colors.blueGrey,
         body: Center( 
           child:Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text('0', 
+          const Text('0', 
           style: TextStyle(
             fontSize: 45,
             fontWeight: FontWeight.w700,
@@ -23,17 +30,47 @@ class CurrencyConvertorMatarialPage extends StatelessWidget {
             ),
             
             ),
-            TextField(
-              style: TextStyle(
-                color: Colors.white,
-              ),
-              decoration: InputDecoration(
-                hintText: 'Please enter the amount in USD',
-                hintStyle: TextStyle(
-                  color: Colors.white60,
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                style: const TextStyle(
+                  color: Colors.black,
                 ),
+                decoration: InputDecoration(
+                  hintText: 'Please enter the amount in USD',
+                  hintStyle: const TextStyle(
+                    color: Colors.black,
+                  ),
+                  prefixIcon: const Icon(Icons.monetization_on_outlined),
+                  prefixIconColor: Colors.black,
+                  filled: true,
+                  fillColor: Colors.white,
+                  enabledBorder:border,
+                  focusedBorder:border,
+                ),
+                keyboardType: TextInputType.numberWithOptions(
+                  decimal: true
+                  ),
+                
               ),
             ),
+
+            TextButton(
+                onPressed: () {
+                debugPrint('Button clicked');
+                },
+                style: ButtonStyle(
+                  backgroundColor: WidgetStateProperty.all(Colors.black),
+                  padding: WidgetStateProperty.all(
+                    const EdgeInsets.symmetric(
+                      vertical: 10.0,
+                      horizontal: 20.0,
+                    ),
+                  ),
+                ),
+                    child: const Text('Convert', style: TextStyle(color: Colors.white)),
+                ),
+
         ],
                 ),
         ),
